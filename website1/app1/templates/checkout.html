@@ -1,0 +1,69 @@
+<h2 class="pro1">Checkout</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            {% for x in order %}
+            <div class="row my-2" style="background-color: antiquewhite;">
+                <div class="col-sm-4">
+                    <div class="inbox1">
+                        <img src="/media/{{x.order_image}}" alt="" height="100px">
+                    </div>
+                </div>
+            <div class="col-sm-4">
+                <div class="span1">
+                    <span>{{x.order_name}}</span>
+                </div>
+                <div class="span1">
+                    <span>{{x.order_price}}</span>
+                </div>
+                <div class="span1">
+                    <span>{{x.order_qty}}</span>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="span1">
+                    <span>{{x.order_amount}}</span>
+                </div>
+                <br>
+            </div>
+
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-sm3">
+            <div style="background-color: lightgray;min-height: 300px;padding: 15px;">
+              {% if co == 0 %}
+              <!--Add address-->
+              <form action="/checkout" method="post">
+                {% csrf_token %}
+                <label for="">Enter Address:</label>
+                <textarea name="dlv_adrs" id="" style="width: 100%;height: 100px;"></textarea>
+                <label for="">Choose delivery type</label>
+                <select name="dlv_type" id="">
+                    <option value="cod">COD</option>
+                    <option value="onlline">Online</option>
+                </select>
+                <a href="/checkout">
+                <button class="btn btn-success mt-3">Submit</button>
+            </a>
+              </form>
+              {% elif co == 1 %}
+              <!-- summery -->
+               Total Amount : {{tot}}
+               <br><br>
+               Shipping : {{shp}}
+               <br><br>
+               GST :{{gst}}
+               <br>
+               <hr>
+               <br>
+               Total : {{gtot}}
+               <br><br>
+               <a href="/confirmorder">
+                <button class="btn btn-success">Confirm order</button>
+               </a>
+               {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

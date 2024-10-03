@@ -1,0 +1,70 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}
+ aboutpage
+{% endblock %}
+{% block content %}
+    <h2>Cart</h2><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                {% for x in cart  %}
+                <div class="row my-2" style="background-color: cadetblue;">
+                    <div class="col-sm-4">
+                        <div class="inbox1">
+                            <img src="/media/{{x.cart_image}}" alt="" height="100px">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="span1">
+                            <span>{{x.cart_name}}</span>
+                        </div>
+                        <div class="span1">
+                            <span>price = Rs{{x.cart_price}}</span>
+                        </div>
+                        <div class="span1">
+                            <span>
+                                <a href="/cart?q=dec&cp={{x.id}}" class="btn btn-danger btn-sm">-</a>
+                                {{x.cart_qty}}
+                                <a href="/cart?q=inc&cp={{x.id}}" class="btn btn-success btn-sm">+</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="span1">
+                            <span>Rs. {{x.cart_amount}}</span>
+                            <br><br>
+                            <a href="cart?del={{x.id}}">
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i>  
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-sm-3">
+                <div style="background-color: beige;min-height: 300px;padding: 15px;">
+                    Total Amount : {{tot}}
+                    <br><br>
+                    Shipping : {{shp}}
+                    <br><br>
+                    GST : {{gst}}
+                    <br><br>
+                    Total : {{gtot}}
+                    <br><br>
+                    <a href="/checkout">
+                        <button class="btn btn-success">Checkout</button>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    
+{% endblock %}

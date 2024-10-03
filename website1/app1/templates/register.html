@@ -1,0 +1,50 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block title %}
+ registration page
+{% endblock %}
+ 
+{% block content %}
+<style>
+    h1.con{
+            text-align: center;
+    }
+</style>
+    <h1 class="con">Registration page</h1>
+    <div class="sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 mx-auto" >
+    <form action="/register" method="post">
+        {% csrf_token %}
+        <div class="mb-3 mt-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+          </div>
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="mobile" class="form-label">Mobile:</label>
+            <input type="number" class="form-control" id="mobile" placeholder="Enter mobile" name="mobile">
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+          </div>
+          <div class="mb-3">
+            <label for="pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+          </div>
+        
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

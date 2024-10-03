@@ -1,0 +1,40 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block title %}
+ aboutpage
+{% endblock %}
+ 
+{% block content %}
+   <div class="row">
+    <div class="col-sm-12">
+        {% for x in order %}
+        <div class="row my-2" style="background-color: beige;">
+            <div class="col-sm-4">
+                <div class="inbox1">
+                    <img src="/media/{{x.order_image}}" alt="" height="100px">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="span1">
+                    <span>{{x.order_name}}</span>
+                </div>
+                <div class="span1">
+                    <span>{{x.order_price}}</span>
+                </div>
+                <div class="span1">
+                    <span>{{x.order_qty}}</span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="span1">
+                    <span>{{x.order_amount}}</span>
+                </div>
+                <br>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+   </div>
+{% endblock %}
